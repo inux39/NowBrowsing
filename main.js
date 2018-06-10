@@ -28,6 +28,10 @@ window.onload = function() {
 	document.getElementById("mastodon").onclick = function() {
 		browser.tabs.create({url: "web+mastodon://share?text=" + fixedEncodeURI(text)});
 	}
+
+	document.getElementById("twitter").onclick = function() {
+		browser.tabs.create({url: "https://twitter.com/intent/tweet?text=" + fixedEncodeURI(text)});
+	}
 }
 
 function fixedEncodeURI (str) {
