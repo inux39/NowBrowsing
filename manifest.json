@@ -1,0 +1,24 @@
+{
+	"manifest_version": 2,
+	"name": "Now Browsing",
+	"version": "0.1",
+
+	"description": "Now Browsing",
+	"homepage_url": "https://github.com/inux39/NowBrowsing",
+	"icons": {
+		"32": "icons/nb_32b.png",
+		"48": "icons/nb_48b.png"
+	},
+
+	"permissions": [
+		"tabs",
+		"activeTab"
+	],
+
+	"browser_action": {
+		"default_icon": "icons/nb_32b.png",
+		"default_title": "Now Browsing",
+		"default_popup": "main.html"
+	}
+}
+

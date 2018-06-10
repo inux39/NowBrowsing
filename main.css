@@ -1,0 +1,14 @@
+fieldset {
+	border: none;
+	margin: 4px;
+	padding: 0;
+}
+
+input[type=text] {
+	width: 200px;
+}
+
+textarea {
+	font-size: 80%;
+}
+
