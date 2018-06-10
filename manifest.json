@@ -1,7 +1,8 @@
 {
 	"manifest_version": 2,
 	"name": "Now Browsing",
-	"version": "0.1",
+	"version": "0.1.1",
+	"author": "inux39",
 
 	"description": "Now Browsing",
 	"homepage_url": "https://github.com/inux39/NowBrowsing",
