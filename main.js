@@ -12,16 +12,13 @@ window.onload = function() {
 		.catch(clear);
 
 	document.getElementById("hash").onchange = function () {
-		if(document.getElementById("hash").checked) {
-			head = "#" + head;
-		} else {
-			head = head.substr(1, head.length);
-		}
+		noSpace();
 		changed();
 	}
 
 	document.getElementById("head").oninput = function() {
 		head = document.getElementById("head").value;
+		noSpace();
 		changed();
 	}
 
@@ -31,6 +28,14 @@ window.onload = function() {
 
 	document.getElementById("twitter").onclick = function() {
 		browser.tabs.create({url: "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text)});
+	}
+}
+
+function noSpace() {
+	if(document.getElementById("hash").checked) {
+		head = "#" + head.replace(/ /g, "_");
+	} else {
+		head = head.substr(1, head.length);
 	}
 }
 
