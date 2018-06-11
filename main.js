@@ -26,16 +26,12 @@ window.onload = function() {
 	}
 
 	document.getElementById("mastodon").onclick = function() {
-		browser.tabs.create({url: "web+mastodon://share?text=" + fixedEncodeURI(text)});
+		browser.tabs.create({url: "web+mastodon://share?text=" + encodeURIComponent(text)});
 	}
 
 	document.getElementById("twitter").onclick = function() {
-		browser.tabs.create({url: "https://twitter.com/intent/tweet?text=" + fixedEncodeURI(text)});
+		browser.tabs.create({url: "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text)});
 	}
-}
-
-function fixedEncodeURI (str) {
-    return encodeURI(str).replace(/%5B/g, '[').replace(/%5D/g, ']');
 }
 
 function changed() {
