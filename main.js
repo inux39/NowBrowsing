@@ -12,6 +12,10 @@ window.onload = function() {
 		})
 		.catch(clear);
 
+	document.getElementById("text").oninput = function() {
+		text = document.getElementById("text").value;
+	}
+
 	document.getElementById("hash").onchange = function () {
 		noSpace();
 		changed();
