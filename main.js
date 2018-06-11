@@ -4,6 +4,7 @@ var body = "";
 var text = "";
 
 window.onload = function() {
+	var features = "width=600,height=500,centerscreen=yes,menubar=yes,location=yes,resizeable=yes,scrollbars=yes,status=yes";
 	browser.tabs.query({currentWindow: true, active: true})
 		.then((tabs) => {
 			body = tabs[0].title + "\n" + tabs[0].url;
@@ -23,11 +24,11 @@ window.onload = function() {
 	}
 
 	document.getElementById("mastodon").onclick = function() {
-		browser.tabs.create({url: "web+mastodon://share?text=" + encodeURIComponent(text)});
+		window.open("web+mastodon://share?text=" + encodeURIComponent(text), "Masotodn", features);
 	}
 
 	document.getElementById("twitter").onclick = function() {
-		browser.tabs.create({url: "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text)});
+		window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(text), "Twitter", features);
 	}
 }
 
