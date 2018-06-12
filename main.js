@@ -1,14 +1,16 @@
 (function() {
-var head = "Now Browsing";
-var body = "";
-var text = "";
-
+const DEF_HEAD = "Now Browsing";
 window.onload = function() {
+	var head = DEF_HEAD;
+	var body = "";
+	var text = "";
+	var url = "";
 	var features = "width=600,height=500,centerscreen=yes,menubar=yes,location=yes,resizeable=yes,scrollbars=yes,status=yes";
 	browser.tabs.query({currentWindow: true, active: true})
 		.then((tabs) => {
-			body = tabs[0].title + "\n" + tabs[0].url;
-			changed();
+			body = tabs[0].title;
+			url = tabs[0].url;
+			flush(head, body, url);
 		})
 		.catch(clear);
 
@@ -16,15 +18,15 @@ window.onload = function() {
 		text = document.getElementById("text").value;
 	}
 
-	document.getElementById("hash").onchange = function () {
-		noSpace();
-		changed();
+	document.getElementById("hash").onchange = function() {
+		head = noSpace(head);
+		flush(head, body, url);
 	}
 
 	document.getElementById("head").oninput = function() {
 		head = document.getElementById("head").value;
-		noSpace();
-		changed();
+		head = noSpace(head);
+		flush(head, body, url);
 	}
 
 	document.getElementById("mastodon").onclick = function() {
@@ -36,17 +38,26 @@ window.onload = function() {
 	}
 }
 
-function noSpace() {
+function noSpace(head) {
 	if(document.getElementById("hash").checked) {
-		head = "#" + head.replace(/ /g, "_");
+		head = head.replace(/ /g, "_");
+		head = "#" + head;
+	} else {
+		head = head.replace(/_/g, " ");
+		if(head.substr(0, 1) === "#") {
+			head = head.substr(1);
+		}
+	}
+	return head;
+}
+
 	} else {
 		head = head.substr(1, head.length);
 	}
 }
 
-function changed() {
-	text = head + ": " + body;
-	document.getElementById("text").value = text;
+function flush(head, body, url) {
+	document.getElementById("text").value = head + ": " + body + "\n" + url + "\n";
 }
 
 function clear() {
