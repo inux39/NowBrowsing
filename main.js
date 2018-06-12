@@ -47,7 +47,7 @@ window.onload = function() {
 		if((head + body + comment + url).length >= limit) {
 			body = optimize(body, limit);
 		}
-		var txt = merge(head, body, url, comment) + u;
+		var txt = merge(head, body, url, comment);
 		u += encodeURIComponent(txt);
 		window.open(u, id, FEAT);
 	}
