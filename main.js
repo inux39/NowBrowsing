@@ -38,6 +38,7 @@ window.onload = function() {
 			b.setAttribute('type', 'image');
 			b.setAttribute('id', s);
 			b.setAttribute('value', s);
+			b.setAttribute('alt', s);
 			b.setAttribute('src', srv.icon);
 			p.appendChild(b);
 		}
