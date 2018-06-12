@@ -1,5 +1,7 @@
 (function() {
 const DEF_HEAD = "Now Browsing";
+const MASTODON = 500;
+const TWITTER = 140;
 window.onload = function() {
 	var head = DEF_HEAD;
 	var body = "";
@@ -35,16 +37,26 @@ window.onload = function() {
 	}
 
 	document.getElementById("mastodon").onclick = function() {
-		var t = encodeURIComponent(merge(head, body, url, comment));
-		var u = "web+mastodon://share?text=" + t;
+		if((head + body + comment + url).length >= MASTODON) {
+			body = optimize(body, MASTODON);
+		}
+		var txt = merge(head, body, url, comment);
+		var u = "web+mastodon://share?text=" + encodeURIComponent(txt);
 		window.open(u, "Masotodn", features);
 	}
 
 	document.getElementById("twitter").onclick = function() {
-		var t = encodeURIComponent(merge(head, body, url, comment));
-		var u = "https://twitter.com/intent/tweet?text=" + t;
+		if((head + body + comment + url).length >= TWITTER) {
+			body = optimize(body, TWITTER);
+		}
+		var txt = merge(head, body, url, comment);
+		var u = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(txt);
 		window.open(u, "Twitter", features);
 	}
+}
+
+function optimize(body, max) {
+	return body.substr(0, max - 4) + "...";
 }
 
 function merge(head, body, url, comment) {
