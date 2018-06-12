@@ -1,13 +1,24 @@
 (function() {
+const FEAT = "width=600,height=500,centerscreen=yes,menubar=yes,location=yes,resizeable=yes,scrollbars=yes,status=yes";
 const DEF_HEAD = "Now Browsing";
-const MASTODON = 500;
-const TWITTER = 140;
+const SERVICE = {
+	mastodon: {
+		limit: 100,
+		base: "web+mastodon://share?text="
+	},
+	twitter: {
+		limit: 140,
+		base: "https://twitter.com/intent/tweet?text="
+	}
+};
+
 window.onload = function() {
 	var head = DEF_HEAD;
 	var body = "";
 	var url = "";
 	var comment = "";
-	var features = "width=600,height=500,centerscreen=yes,menubar=yes,location=yes,resizeable=yes,scrollbars=yes,status=yes";
+
+	addShareButton();
 	browser.tabs.query({currentWindow: true, active: true})
 		.then((tabs) => {
 			body = tabs[0].title;
@@ -16,6 +27,37 @@ window.onload = function() {
 			flush(t);
 		})
 		.catch(clear);
+
+	function addShareButton() {
+		var p = document.getElementById("share_button");
+		for(var s in SERVICE) {
+			var srv = SERVICE[s];
+			var b = document.createElement("input");
+			b.type = "button";
+			b.value = s;
+			b.id = s;
+			p.appendChild(b);
+		}
+	}
+
+	function openPostWindow(id) {
+		var srv = SERVICE[id];
+		var limit = srv.limit;
+		var u = srv.base;
+		if((head + body + comment + url).length >= limit) {
+			body = optimize(body, limit);
+		}
+		var txt = merge(head, body, url, comment) + u;
+		u += encodeURIComponent(txt);
+		window.open(u, id, FEAT);
+	}
+
+	document.getElementById("mastodon").onclick = function() {
+		openPostWindow("mastodon");
+	}
+	document.getElementById("twitter").onclick = function() {
+		openPostWindow("twitter");
+	}
 
 	document.getElementById("comment").oninput = function() {
 		comment = document.getElementById("comment").value;
@@ -36,24 +78,8 @@ window.onload = function() {
 		flush(t);
 	}
 
-	document.getElementById("mastodon").onclick = function() {
-		if((head + body + comment + url).length >= MASTODON) {
-			body = optimize(body, MASTODON);
-		}
-		var txt = merge(head, body, url, comment);
-		var u = "web+mastodon://share?text=" + encodeURIComponent(txt);
-		window.open(u, "Masotodn", features);
-	}
-
-	document.getElementById("twitter").onclick = function() {
-		if((head + body + comment + url).length >= TWITTER) {
-			body = optimize(body, TWITTER);
-		}
-		var txt = merge(head, body, url, comment);
-		var u = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(txt);
-		window.open(u, "Twitter", features);
-	}
 }
+
 
 function optimize(body, max) {
 	return body.substr(0, max - 4) + "...";
