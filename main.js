@@ -4,11 +4,13 @@ const DEF_HEAD = "Now Browsing";
 const SERVICE = {
 	mastodon: {
 		limit: 100,
-		base: "web+mastodon://share?text="
+		base: "web+mastodon://share?text=",
+		icon: "icons/mastodon.svg"
 	},
 	twitter: {
 		limit: 140,
-		base: "https://twitter.com/intent/tweet?text="
+		base: "https://twitter.com/intent/tweet?text=",
+		icon: "icons/twitter.svg"
 	}
 };
 
@@ -33,9 +35,11 @@ window.onload = function() {
 		for(var s in SERVICE) {
 			var srv = SERVICE[s];
 			var b = document.createElement("input");
-			b.type = "button";
-			b.value = s;
-			b.id = s;
+			b.setAttribute('type', 'image');
+			b.setAttribute('id', s);
+			b.setAttribute('value', s);
+			b.setAttribute('alt', s);
+			b.setAttribute('src', srv.icon);
 			p.appendChild(b);
 		}
 	}

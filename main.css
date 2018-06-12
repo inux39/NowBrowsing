@@ -12,3 +12,9 @@ textarea {
 	font-size: 80%;
 }
 
+input[type=image] {
+	padding: 2px;
+	width: 48px;
+	height: 48px;
+}
+
