@@ -10,33 +10,45 @@ window.onload = function() {
 		.then((tabs) => {
 			body = tabs[0].title;
 			url = tabs[0].url;
-			flush(head, body, url, comment);
+			var t = merge(head, body, url, comment);
+			flush(t);
 		})
 		.catch(clear);
 
 	document.getElementById("comment").oninput = function() {
 		comment = document.getElementById("comment").value;
-		flush(head, body, url, comment);
+		var t = merge(head, body, url, comment);
+		flush(t);
 	}
 
 	document.getElementById("hash").onchange = function() {
 		head = noSpace(head);
-		flush(head, body, url, comment);
+		var t = merge(head, body, url, comment);
+		flush(t);
 	}
 
 	document.getElementById("head").oninput = function() {
 		head = document.getElementById("head").value;
 		head = noSpace(head);
-		flush(head, body, url, comment);
+		var t = merge(head, body, url, comment);
+		flush(t);
 	}
 
 	document.getElementById("mastodon").onclick = function() {
-		window.open("web+mastodon://share?text=" + encodeURIComponent(text), "Masotodn", features);
+		var t = encodeURIComponent(merge(head, body, url, comment));
+		var u = "web+mastodon://share?text=" + t;
+		window.open(u, "Masotodn", features);
 	}
 
 	document.getElementById("twitter").onclick = function() {
-		window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(text), "Twitter", features);
+		var t = encodeURIComponent(merge(head, body, url, comment));
+		var u = "https://twitter.com/intent/tweet?text=" + t;
+		window.open(u, "Twitter", features);
 	}
+}
+
+function merge(head, body, url, comment) {
+	return head + ": " + body + "\n" + url + "\n" + comment;
 }
 
 function noSpace(head) {
@@ -60,9 +72,8 @@ function fit(text, max) {
 	return s;
 }
 
-function flush(head, body, url, comment) {
-	var t = head + ": " + body + "\n" + comment;
-	document.getElementById("preview").value = t;
+function flush(text) {
+	document.getElementById("preview").value = text;
 }
 
 function clear() {
