@@ -115,6 +115,7 @@ function fit(text, max) {
 }
 
 function flush(text) {
+	document.getElementById("count").innerHTML = text.length;
 	document.getElementById("preview").value = text;
 }
 
