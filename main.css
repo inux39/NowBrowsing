@@ -1,20 +1,26 @@
-fieldset {
-	border: none;
-	margin: 4px;
-	padding: 0;
+body {
+	width: 300px;
+	height: 400px;
+	margin: 10px;
 }
 
 input[type=text] {
-	width: 200px;
-}
-
-textarea {
-	font-size: 80%;
+	width: 60%;
 }
 
 input[type=image] {
-	padding: 2px;
-	width: 48px;
-	height: 48px;
+	width: 50px;
+	height: 50px;
+	border: none;
+	padding: 4px;
+}
+
+div.test {
+	padding: 8px;
+}
+
+div.text textarea {
+	width: 100%;
+	font-size: 80%;
 }
 

@@ -7,21 +7,25 @@
 	</head>
 
 	<body>
-		<form name="control">
+		<div name="control">
 			<input type="text" id="head" placeholder="Now Browsing">
 			<input type="checkbox" id="hash">HashTag
-		</form>
+		</div>
 
-		<form name="result">
-			<label>Comment</label><br>
-			<textarea id="comment" rows="2"></textarea><br>
-			<label>Preview</label><br>
-			<textarea id="preview" rows="8" readonly></textarea><br>
+		<div name="edit">
+			<label>Comment</label>
+			<div class="text">
+				<textarea id="comment" rows="2"></textarea>
+			</div>
+			<label>Preview</label>
+			<div class="text">
+				<textarea id="preview" rows="8" readonly></textarea>
+			</div>
 			<div id="count" align="right"></div>
-		</form>
+		</div>
 
-		<form id="share_button">
-		</form>
+		<div id="share_button">
+		</div>
 
 		<script src="main.js"></script>
 	</body>
