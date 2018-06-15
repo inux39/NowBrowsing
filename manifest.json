@@ -3,6 +3,11 @@
 	"name": "Now Browsing",
 	"version": "0.1.3",
 	"author": "inux39",
+	"applications": {
+		"gecko": {
+			"id": "{6bb57211-7ad3-4891-a859-9c4961e6a903}"
+		}
+	},
 
 	"description": "Now Browsing",
 	"homepage_url": "https://github.com/inux39/NowBrowsing",
