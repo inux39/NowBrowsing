@@ -18,13 +18,19 @@
 
     "permissions": [
         "tabs",
-        "activeTab"
+        "activeTab",
+        "storage"
     ],
 
     "browser_action": {
         "default_icon": "icons/nb_32b.png",
         "default_title": "Now Browsing",
         "default_popup": "main.html"
+    },
+
+    "options_ui": {
+        "page": "options.html",
+        "browser_style": true
     }
 }
 
