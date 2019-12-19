@@ -4,10 +4,10 @@ window.addEventListener('beforeunload', function (e) {
 });
 
 window.onload = function() {
-    "use strict";
-    var body = "";
-    var url = "";
-    var comment = "";
+    'use strict';
+    var body = '';
+    var url = '';
+    var comment = '';
     /*
     browser.tabs.query({currentWindow: true, active: true})
         .then((tabs) => {
