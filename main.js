@@ -1,4 +1,6 @@
 (function() {
+"use strict";
+
 const FEAT = "width=600,height=500,centerscreen=yes,menubar=yes,location=yes,resizeable=yes,scrollbars=yes,status=yes";
 const DEF_HEAD = "Now Browsing";
 const SERVICE = {
