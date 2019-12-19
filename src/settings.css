@@ -11,6 +11,7 @@ ul, li {
     display: flex;
     padding-left: 0;
     margin-left: 0;
+    margin: 10px 0;
 }
 
 .master {
