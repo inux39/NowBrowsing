@@ -1,3 +1,22 @@
 /*
+ *
  */
+
+.favicon {
+    position: absolute;
+    top: 70px;
+    left: 70px;
+}
+
+.user_icon {
+    position: relative;
+}
+
+.favicon > img {
+    width: 30px;
+}
+
+.user_icon > img {
+    width: 100px;
+}
 

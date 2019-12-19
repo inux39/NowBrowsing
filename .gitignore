@@ -1,0 +1,5 @@
+img/*.png
+
+!img/icon_32.png
+!img/icon_48.png
+

@@ -3,19 +3,27 @@
 <head>
     <meta charset="utf-8">
     <title>Now Browsing - Settings</title>
+    <link href="img/icon_32.png" rel="icon">
+    <link href="settings.css" rel="stylesheet">
 </head>
 
 <body>
-    <div id="additional_headers">
-        <input type="text" name="head_text">
-        <input type="checkbox" name="enabled" value="true">
-    </div>
-    <div id="accounts">
-        <div class="account">
-            <img class="favicon" src="" alt="favicon">
-            <img class="user_icon" src="" alt="user's icon">
-            <p class="user_name">
-            <p class="user_id">
+    <div class="master">
+        <div id="additional_headers">
+            <input type="text" name="head_text">
+            <input type="checkbox" name="enabled" value="true">
+        </div>
+        <div id="accounts">
+            <div class="account">
+                <div class="user_icon">
+                    <img src="img/b.png" alt="user's icon">
+                    <div class="favicon">
+                        <img src="img/a.png" alt="favicon">
+                    </div>
+                </div>
+                <p class="user_name">
+                <p class="user_id">
+            </div>
         </div>
     </div>
     <script src="settings.js"></script>
