@@ -12,8 +12,8 @@
     "description": "Now Browsing",
     "homepage_url": "https://github.com/inux39/NowBrowsing",
     "icons": {
-        "32": "img/icon_32.png",
-        "48": "img/icon_48.png"
+        "32": "src/img/icon_32.png",
+        "48": "src/img/icon_48.png"
     },
 
     "permissions": [
@@ -23,7 +23,7 @@
     ],
 
     "browser_action": {
-        "default_icon": "img/icon_32.png",
+        "default_icon": "src/img/icon_32.png",
         "default_title": "Now Browsing",
         "default_popup": "src/main.html"
     },

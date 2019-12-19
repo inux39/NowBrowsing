@@ -1,22 +1,22 @@
 /*
  *
  */
-
-.favicon {
-    position: absolute;
-    top: 70px;
-    left: 70px;
+.master {
+    max-width: 600px;
 }
 
 .user_icon {
-    position: relative;
+    /*
+    float: left;
+    */
+    width: 70px;
 }
 
-.favicon > img {
-    width: 30px;
+.user_server_name {
+    color: lightgray;
 }
 
-.user_icon > img {
-    width: 100px;
+.usernames {
+    display: inline-block;
 }
 
