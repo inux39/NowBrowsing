@@ -1,15 +1,25 @@
 /*
  *
  */
+#head_text {
+    width: 50%;
+}
+
+ul, li {
+    list-style:  none;
+    border-bottom: #e0e0e0 solid 1px;
+    display: flex;
+    padding-left: 0;
+    margin-left: 0;
+}
+
 .master {
-    max-width: 600px;
+    max-width: 500px;
 }
 
 .user_icon {
-    /*
-    float: left;
-    */
     width: 70px;
+    padding: 5px;
 }
 
 .user_server_name {

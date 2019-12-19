@@ -9,12 +9,13 @@
 
 <body>
     <div class="master">
-        <div id="additional_headers">
+        <div class="headers">
             <input type="text" id="head_text">
             <input type="checkbox" id="text_enabled" value="true">
         </div>
-        <div id="accounts">
-            <div class="account">
+        <div class="accounts">
+            <ul>
+                <li id="hogehoge123">
                 <input type="checkbox" class="account_selected" value="true">
                 <img class="user_icon" src="img/b.png" alt="user's icon">
                 <div class="usernames">
@@ -23,7 +24,12 @@
                     <br>
                     <span class="user_server_name">@don.inux39.me</span>
                 </div>
-            </div>
+                </li>
+            </ul>
+        </div>
+        <div class="account_control">
+            <input type="button" id="button_add" value="Add account">
+            <input type="button" id="button_remove" value="Remove checked accounts">
         </div>
     </div>
     <script src="settings.js"></script>
