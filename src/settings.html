@@ -10,28 +10,26 @@
 <body>
     <div class="master">
         <div class="headers">
-            <span>Header</span>
-            <br>
-            <input type="text" id="head_text">
+            <input type="text" id="head_text" placeholder="Now Browsing">
             <input type="checkbox" id="text_enabled" value="true">Use this header.
         </div>
         <div class="accounts">
-            <ul>
-                <li id="hogehoge123">
+            <ul class="account_items">
+                <li id="hogehoge123" class="account_item">
                 <input type="checkbox" class="account_selected" value="true">
                 <img class="user_icon" src="img/b.png" alt="user's icon">
                 <div class="usernames">
                     <span class="user_name">inux39</span>
                     <span class="user_id">@inux39</span>
                     <br>
-                    <span class="user_server_name">@don.inux39.me</span>
+                    <span class="user_host">@don.inux39.me</span>
                 </div>
                 </li>
             </ul>
         </div>
         <div class="account_control">
-            <input type="button" id="button_add" value="Add account">
-            <input type="button" id="button_remove" value="Remove checked accounts">
+            <button type="submit" id="button_add" value="add">Add account</button>
+            <button type="submit" id="button_remove" value="remove">Remove selected accounts</button>
         </div>
     </div>
     <script src="settings.js"></script>

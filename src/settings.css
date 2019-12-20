@@ -5,13 +5,16 @@
     width: 50%;
 }
 
-ul, li {
-    list-style:  none;
+ul {
+   list-style:  none;
+   padding-left: 0;
+}
+
+li {
+
     border-bottom: #e0e0e0 solid 1px;
     display: flex;
-    padding-left: 0;
-    margin-left: 0;
-    margin: 10px 0;
+
 }
 
 .master {
@@ -20,14 +23,18 @@ ul, li {
 
 .user_icon {
     width: 70px;
-    padding: 5px;
 }
 
-.user_server_name {
+.user_host {
     color: lightgray;
 }
 
 .usernames {
     display: inline-block;
+    margin: 5px;
+}
+
+.account_item {
+    padding: 10px;
 }
 
