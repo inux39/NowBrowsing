@@ -1,6 +1,7 @@
 /*
  *
  */
+
 #head_text {
     width: 50%;
 }
@@ -11,13 +12,13 @@ ul {
 }
 
 li {
-
     border-bottom: #e0e0e0 solid 1px;
     display: flex;
 
 }
 
 .master {
+    padding: 20px;
     max-width: 500px;
 }
 
@@ -25,13 +26,19 @@ li {
     width: 70px;
 }
 
-.user_host {
+.host {
     color: lightgray;
 }
 
 .usernames {
     display: inline-block;
     margin: 5px;
+}
+
+.refresh_button {
+    width: 40px;
+    height: 40px;
+    margin: auto;
 }
 
 .account_item {

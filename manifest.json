@@ -19,7 +19,8 @@
     "permissions": [
         "tabs",
         "activeTab",
-        "storage"
+        "storage",
+        "identity"
     ],
 
     "browser_action": {
@@ -29,7 +30,7 @@
     },
 
     "options_ui": {
-        "page": "src/options.html",
+        "page": "src/settings.html",
         "browser_style": true
     }
 }

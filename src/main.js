@@ -17,6 +17,6 @@ window.onload = function() {
         .catch(clear);
     */
 }
-document.addEventListener('DOMContentLoaded', restoreOptions);
+//document.addEventListener('DOMContentLoaded', restoreOptions);
 })();
 
