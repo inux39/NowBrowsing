@@ -4,7 +4,6 @@ function test() {
     var child = document.createElement('li');
     child.setAttribute('id', 'child' + ss);
     child.setAttribute('class', 'account_item');
-    ss += 1;
 
     var account_selected = document.createElement('input');
     account_selected.setAttribute('type', 'checkbox');
@@ -22,7 +21,7 @@ function test() {
     usernames.setAttribute('class', 'usernames');
     var user_name = document.createElement('span');
     user_name.setAttribute('class', 'user_name');
-    user_name.innerText = 'inux39';
+    user_name.innerText = 'inux' + ss;
     usernames.appendChild(user_name);
     var user_id = document.createElement('span');
     user_id.setAttribute('class', 'user_id');
@@ -35,13 +34,14 @@ function test() {
     usernames.appendChild(user_host);
 
     child.appendChild(usernames);
+    ss += 1;
 
     var o = document.getElementsByClassName('account_items');
     o[0].appendChild(child);
 }
 
 window.onload = function() {
-//    test();
+    test();
 }
 
 document.getElementById('button_add').onclick = function() {
@@ -51,7 +51,7 @@ document.getElementById('button_add').onclick = function() {
 document.getElementById('button_remove').onclick = function() {
     var check = document.getElementsByClassName('account_selected');
     var items = document.getElementsByClassName('account_items');
-    for(var i = 0; i < check.length; i++) {
+    for(var i = check.length - 1; i >= 0; i--) {
         if(check[i].checked) {
             items[0].removeChild(check[i].parentNode);
         }
