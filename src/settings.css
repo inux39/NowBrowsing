@@ -49,3 +49,23 @@ li {
     padding: 10px;
 }
 
+.account_control {
+    display: flex;
+}
+
+#button_add {
+    box-shadow: 2px 2px 3px 1px #666;
+    font-size: medium;
+    border-radius: 10px;
+}
+
+#button_remove {
+    margin-left: auto;
+    color: #fff;
+    background-color: #b22222;
+    box-shadow: 2px 2px 3px 1px #666;
+    font-weight: bold;
+    font-size: medium;
+    border-radius: 10px;
+}
+

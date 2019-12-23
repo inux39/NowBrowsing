@@ -7,28 +7,24 @@
 </head>
 
 <body>
-    <div class="control">
-        <input type="text" id="head" placeholder="Now Browsing">
-        <input type="checkbox" id="hash">HashTag
-    </div>
-
-    <div name="edit">
-        <label>Comment</label>
-        <div class="text">
-            <textarea id="comment" rows="2"></textarea>
+<div class="master">
+    <div class="share_display">
+        <textarea id="share_text" rows="8"></textarea>
+        <div class="char_count">
+            <span id="char_counter"></span>
+            <span id="unit">char</span>
         </div>
-        <label>Preview</label>
-        <div class="text">
-            <textarea id="preview" rows="8" readonly></textarea>
-        </div>
-        <div id="count" align="right"></div>
     </div>
 
-    <div id="share_button">
-        <button type="submit" id="button1" value="submit">BUTTON</button>
+    <div class="share_buttons">
+        <button type="submit" class="share_button" title="BUTTON"></button>
+        <button type="submit" class="share_button" title="BUTTON"></button>
+        <button type="submit" class="share_button" title="BUTTON"></button>
+        <button type="submit" class="share_button" title="BUTTON"></button>
+        <button type="submit" class="share_button" title="BUTTON"></button>
     </div>
-
     <script src="index.js"></script>
+</div>
 </body>
 </html>
 
