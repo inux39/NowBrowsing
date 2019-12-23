@@ -1,20 +1,18 @@
+'use strict';
 (function() {
 //window.addEventListener('beforeunload', function (e) {
 //    e.preventDefault();
 //});
 
 window.onload = function() {
-    'use strict';
     var body = '';
     var url = '';
     var comment = '';
 
-    /*
     var storage = browser.storage.sync.get('button');
     storage.then((ret) => {
-        document.getElementById('comment').value = ret.button;
+        document.getElementById('share_text').value = ret.button;
     });
-    */
 
     /*
     browser.tabs.query({currentWindow: true, active: true})
@@ -26,6 +24,13 @@ window.onload = function() {
     */
 }
 
+document.querySelector("share_button").addEventListener('onclick', function(e) {
+    var input = document.getElementById('share_text').value;
+    browser.storage.sync.set({
+        button: 'a=b'
+    });
+    e.preventDefault();
+});
 /*
 document.getElementById('button1').onclick = function() {
     var input = document.getElementById('comment').value;

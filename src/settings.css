@@ -1,20 +1,19 @@
 /*
  *
  */
-
-#head_text {
-    width: 50%;
-}
-
 ul {
-   list-style:  none;
-   padding-left: 0;
+    list-style:  none;
+    padding-left: 0;
 }
 
 li {
     border-bottom: #e0e0e0 solid 1px;
     display: flex;
 
+}
+
+hr {
+    margin: 20px;
 }
 
 .master {
@@ -51,6 +50,10 @@ li {
 
 .account_control {
     display: flex;
+}
+
+#head_text {
+    width: 50%;
 }
 
 #button_add {
