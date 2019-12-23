@@ -1,0 +1,29 @@
+body {
+    max-width: 350px;
+    margin: 10px;
+}
+
+.control {
+    display: flex;
+}
+
+input[type=text] {
+    width: 60%;
+}
+
+input[type=image] {
+    width: 50px;
+    height: 50px;
+    border: none;
+    padding: 4px;
+}
+
+div.test {
+    padding: 8px;
+}
+
+div.text textarea {
+    width: 100%;
+    font-size: 80%;
+}
+

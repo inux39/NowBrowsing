@@ -20,13 +20,14 @@
         "tabs",
         "activeTab",
         "storage",
-        "identity"
+        "identity",
+        "unlimitedStorage"
     ],
 
     "browser_action": {
         "default_icon": "src/img/icon_32.png",
         "default_title": "Now Browsing",
-        "default_popup": "src/main.html"
+        "default_popup": "src/index.html"
     },
 
     "options_ui": {

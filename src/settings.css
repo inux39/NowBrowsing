@@ -24,6 +24,7 @@ li {
 
 .user_icon {
     width: 70px;
+    margin: 5px 10px;
 }
 
 .host {
@@ -32,13 +33,16 @@ li {
 
 .usernames {
     display: inline-block;
-    margin: 5px;
+    margin: 10px 5px;
 }
 
 .refresh_button {
     width: 40px;
     height: 40px;
-    margin: auto;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 5px;
 }
 
 .account_item {
