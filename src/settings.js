@@ -47,11 +47,9 @@ function test() {
 }
 
 window.onload = function() {
-    test();
 }
 
 document.getElementById('button_add').onclick = function() {
-    test();
 }
 
 document.getElementById('button_remove').onclick = function() {
@@ -73,5 +71,7 @@ document.getElementById('button_remove').onclick = function() {
     items.removeChild(check[i].parentNode);
     */
 }
+
+document.getElementById('button_clear_all').onclick = clear_all();
 }());
 

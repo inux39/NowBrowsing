@@ -12,13 +12,9 @@ li {
 
 }
 
-hr {
-    margin: 20px;
-}
-
 .master {
-    padding: 20px;
-    max-width: 500px;
+    padding: 10px;
+    width: 350px;
 }
 
 .user_icon {
@@ -52,23 +48,30 @@ hr {
     display: flex;
 }
 
+.control_remove {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+}
+
 #head_text {
     width: 50%;
 }
 
 #button_add {
+    margin-top: 5px;
+    margin-bottom: 5px;
     box-shadow: 2px 2px 3px 1px #666;
-    font-size: medium;
     border-radius: 10px;
 }
 
-#button_remove {
-    margin-left: auto;
+#button_remove, #button_clear_all {
+    margin-top: 5px;
+    margin-bottom: 5px;
     color: #fff;
     background-color: #b22222;
     box-shadow: 2px 2px 3px 1px #666;
     font-weight: bold;
-    font-size: medium;
     border-radius: 10px;
 }
 

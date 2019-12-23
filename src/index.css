@@ -1,14 +1,6 @@
-hr {
-    margin: 20px;
-}
-
 .master {
-    max-width: 300px;
-    margin: 10px;
-}
-
-.share_display {
-    margin: 10px;
+    width: 350px;
+    margin: 20px;
 }
 
 .share_button {
@@ -16,6 +8,10 @@ hr {
     width: 55px;
     height: 55px;
     border: none;
+}
+
+.char_count {
+    text-align: right;
 }
 
 #share_text {
