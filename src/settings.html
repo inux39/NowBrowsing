@@ -34,9 +34,20 @@
     <div class="internal_links">
         <a href="index.html">Main page</a>
     </div>
+
+    <div id="modal" class="modal_hidden">
+        <span>Enter server's domain</span>
+        <br>
+        <input type="text" id="server_domain" placeholder="ex.) mastodos.com">
+        <div class="modal_buttons">
+            <button id="open_auth_page">Start</button>
+            <button id="auth_cancel">Cancel</button>
+        </div>
+    </div>
+    <div id="modal_overlay" class="modal_hidden"></div>
 </div>
-<script src="settings.js"></script>
 <script src="storage.js"></script>
+<script src="settings.js"></script>
 </body>
 </html>
 
