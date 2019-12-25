@@ -12,8 +12,8 @@ window.onload = function() {
     });
     */
 
-    var body;
-    var url;
+    var body = "";
+    var url = "";
     var textarea = document.getElementById("share_text");
     browser.tabs.query({currentWindow: true, active: true})
     .then((tabs) => {
@@ -22,6 +22,12 @@ window.onload = function() {
         textarea.innerHTML = body + "\n" + url;
     });
 }
+
+/*
+TODO
+MEMO:
+    実際に判定されるであろう文字数 = 投稿するテキスト - URLの文字数
++/
 
 /*
 document.querySelector("share_button").addEventListener("onclick", function(e) {
