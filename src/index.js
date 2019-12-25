@@ -23,6 +23,10 @@ window.onload = function() {
     });
 }
 
+document.getElementById("settings_button").addEventListener("click", function() {
+    window.open("settings.html", "_blank");
+    window.close();
+});
 /*
 TODO
 MEMO:

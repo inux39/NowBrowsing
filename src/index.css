@@ -14,7 +14,13 @@
     text-align: right;
 }
 
+.internal_buttons {
+    margin-top: 5px;
+    text-align: right;
+}
+
 #share_text {
+    font-size: 10pt;
     width: 100%;
 }
 
