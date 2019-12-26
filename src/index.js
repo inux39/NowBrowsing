@@ -11,22 +11,24 @@ window.onload = function() {
         document.getElementById("share_text").value = ret.button;
     });
     */
-
-    var body = "";
-    var url = "";
     var textarea = document.getElementById("share_text");
     browser.tabs.query({currentWindow: true, active: true})
     .then((tabs) => {
-        body = tabs[0].title;
-        url = tabs[0].url;
-        textarea.innerHTML = body + "\n" + url;
+        var title = tabs[0].title;
+        var url = tabs[0].url;
+        textarea.innerHTML = title + "\n" + url + "\n";
+        refresh_char_counter();
     });
+
 }
 
 document.getElementById("settings_button").addEventListener("click", function() {
     window.open("settings.html", "_blank");
     window.close();
 });
+
+document.getElementById("share_text").addEventListener("keyup", refresh_char_counter);
+
 /*
 TODO
 MEMO:
@@ -51,5 +53,21 @@ document.getElementById('button1').onclick = function() {
 }
 */
 //document.addEventListener('DOMContentLoaded', restoreOptions);
+function refresh_char_counter() {
+    var target = document.getElementById("share_text").value;
+    var url = url_regex(target);
+    var count = target.length - url.length;
+    document.getElementById("char_counter").innerText = count;
+}
+
+function url_regex(s) {
+    var regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
+    var url = s.match(regex);
+    if(!url) {
+        return "";
+    } else {
+        return url[0];
+    }
+}
 })();
 
