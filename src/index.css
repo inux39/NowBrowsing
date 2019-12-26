@@ -1,6 +1,6 @@
 .master {
     width: 350px;
-    margin: 20px;
+    margin: 15px 10px;
 }
 
 .share_button {
@@ -22,5 +22,9 @@
 #share_text {
     font-size: 10pt;
     width: 100%;
+}
+
+#unit {
+    display: none;
 }
 
