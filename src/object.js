@@ -1,3 +1,11 @@
+const user_agent = browser.management.getSelf().then((addon) => {
+    var ua = addon.name + " (" + addon.version + "; +" +
+        addon.homepageUrl + ")";
+    return ua;
+}, (some) => {
+    return "Now Browsing";
+});
+
 class StorageObjects {
 }
 
