@@ -11,13 +11,28 @@ window.onload = function() {
         document.getElementById("share_text").value = ret.button;
     });
     */
-    var textarea = document.getElementById("share_text");
     browser.tabs.query({currentWindow: true, active: true})
     .then((tabs) => {
+        var textarea = document.getElementById("share_text");
         var title = tabs[0].title;
         var url = tabs[0].url;
         textarea.innerHTML = title + "\n" + url + "\n";
         refresh_char_counter();
+
+        // local storageから取得して、書きこむ
+        var draft = new Array();
+        var current = {
+            title: title,
+            url: url,
+            text: textarea.value
+        };
+        draft.push(current);
+        console.log(draft);
+        /*
+        console.log(current);
+        var saveObject = new Object();
+        console.log(saveObject);
+        */
     });
 
 }
@@ -28,12 +43,6 @@ document.getElementById("settings_button").addEventListener("click", function() 
 });
 
 document.getElementById("share_text").addEventListener("keyup", refresh_char_counter);
-
-/*
-TODO
-MEMO:
-    実際に判定されるであろう文字数 = 投稿するテキスト - URLの文字数
-+/
 
 /*
 document.querySelector("share_button").addEventListener("onclick", function(e) {
