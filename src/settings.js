@@ -1,4 +1,63 @@
 (function() {
+// ロードされたときにストレージの設定を読んで適用
+//window.addEventListener("load", );
+// ウィンドウを閉じようとしたときにストレージに設定を書く
+//window.addEventListener("beforeunload", );
+document.getElementById("button_clear_all").addEventListener("click", clear_all);
+document.getElementById("button_add").addEventListener("click", function() {
+});
+document.getElementById("button_remove").addEventListener("click", function() {
+    var check = document.getElementsByClassName("account_selected");
+    var items = document.getElementById("account_items");
+    var confirmed = window.confirm("Realy ok?");
+    // 削除するアカウントのリスト
+    // できればこれを警告で出したい
+    var list = [];
+
+    /*
+    // リストをとる
+    for(var i = check.length - 1; i >= 0; i--) {
+        if(check[i].checked) {
+        lsit.append(i);
+        }
+    }
+
+    // リストから削除する
+    items.removeChild(check[i].parentNode);
+    */
+});
+
+function get_sync() {
+
+}
+
+function set_sync() {
+
+}
+
+function modal_open() {
+    var mask = document.getElementById("modal_overlay");
+    var modal = document.getElementById("modal");
+    mask.classList.remove("modal_hidden");
+    modal.classList.remove("modal_hidden");
+}
+
+function modal_close() {
+    var mask = document.getElementById("modal_overlay");
+    var modal = document.getElementById("modal");
+    var confirmed = window.confirm("Realy ok?");
+    if(confirmed) {
+        mask.classList.add("modal_hidden");
+        modal.classList.add("modal_hidden");
+    }
+}
+
+// Modal
+document.getElementById("button_add").addEventListener("click", modal_open);
+document.getElementById("auth_cancel").addEventListener("click", modal_close);
+document.getElementById("modal_overlay").addEventListener("click", modal_close);
+
+// debug
 var ss = 0;
 
 function build_accountlist() {
@@ -12,7 +71,7 @@ function build_accountlist() {
 
     var user_icon = document.createElement("img");
     user_icon.setAttribute("class", "user_icon");
-    user_icon.setAttribute("alt", "user"s icon");
+    user_icon.setAttribute("alt", "user's icon");
     frame.appendChild(user_icon);
 
     var usernames = document.createElement("div");
@@ -46,53 +105,5 @@ function test() {
     o.appendChild(child);
 }
 
-window.onload = function() {
-}
-
-document.getElementById("button_clear_all").addEventListener("click", clear_all);
-document.getElementById("button_add").addEventListener("click", function() {
-});
-document.getElementById("button_remove").addEventListener("click", function() {
-    var check = document.getElementsByClassName("account_selected");
-    var items = document.getElementById("account_items");
-    var confirmed = window.confirm("Realy ok?");
-    // 削除するアカウントのリスト
-    // できればこれを警告で出したい
-    var list = [];
-
-    /*
-    // リストをとる
-    for(var i = check.length - 1; i >= 0; i--) {
-        if(check[i].checked) {
-        lsit.append(i);
-        }
-    }
-
-    // リストから削除する
-    items.removeChild(check[i].parentNode);
-    */
-});
-
-function modal_open() {
-    var mask = document.getElementById("modal_overlay");
-    var modal = document.getElementById("modal");
-    mask.classList.remove("modal_hidden");
-    modal.classList.remove("modal_hidden");
-}
-
-function modal_close() {
-    var mask = document.getElementById("modal_overlay");
-    var modal = document.getElementById("modal");
-    var confirmed = window.confirm("Realy ok?");
-    if(confirmed) {
-        mask.classList.add("modal_hidden");
-        modal.classList.add("modal_hidden");
-    }
-}
-
-// Modal
-document.getElementById("button_add").addEventListener("click", modal_open);
-document.getElementById("auth_cancel").addEventListener("click", modal_close);
-document.getElementById("modal_overlay").addEventListener("click", modal_close);
 }());
 

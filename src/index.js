@@ -38,7 +38,7 @@ function init() {
         refresh_char_counter();
 
         for(var o in draft) {
-            if(o.url == url) {
+            if(o.url === url) {
                 text.innerHTML = o.text;
             }
         }
