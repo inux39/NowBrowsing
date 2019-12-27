@@ -1,52 +1,11 @@
 'use strict';
 (function() {
-//window.addEventListener('beforeunload', function (e) {
-//    e.preventDefault();
-//});
-
-window.onload = function() {
-    /*
-    var storage = browser.storage.sync.get("button");
-    storage.then((ret) => {
-        document.getElementById("share_text").value = ret.button;
-    });
-    */
-    browser.tabs.query({currentWindow: true, active: true})
-    .then((tabs) => {
-        var textarea = document.getElementById("share_text");
-        var title = tabs[0].title;
-        var url = tabs[0].url;
-        textarea.innerHTML = title + "\n" + url + "\n";
-        refresh_char_counter();
-
-        // TODO:
-        // local storageから取得
-        // 同じURLでの保存がないか確認
-        // あったら復元、なければそのまま。
-        // そして保存   * ここで保存したものは、投稿ボタン押したときに消す
-        var draft = new Array();
-        var current = {
-            title: title,
-            url: url,
-            text: textarea.value
-        };
-        draft.push(current);
-        console.log(draft);
-        /*
-        console.log(current);
-        var saveObject = new Object();
-        console.log(saveObject);
-        */
-    });
-
-}
-
+document.addEventListener('DOMContentLoaded', init);
+document.getElementById("share_text").addEventListener("keyup", refresh_char_counter);
 document.getElementById("settings_button").addEventListener("click", function() {
     window.open("settings.html", "_blank");
     window.close();
 });
-
-document.getElementById("share_text").addEventListener("keyup", refresh_char_counter);
 
 /*
 document.querySelector("share_button").addEventListener("onclick", function(e) {
@@ -57,15 +16,46 @@ document.querySelector("share_button").addEventListener("onclick", function(e) {
     e.preventDefault();
 });
 */
-/*
-document.getElementById('button1').onclick = function() {
-    var input = document.getElementById('comment').value;
-    browser.storage.sync.set({
-        button: 'a=b'
+
+function init() {
+    var text = document.getElementById("share_text");
+    var draft = new Array();
+
+    browser.storage.local.get("draft")
+    .then((o) => {
+        draft = o;
+        for(var i = draft.length; i > 5; i--) {
+            draft.shift();
+            console.log(draft);
+        }
+    });
+
+    browser.tabs.query({currentWindow: true, active: true})
+    .then((tabs) => {
+        var title = tabs[0].title;
+        var url = tabs[0].url;
+        text.innerHTML = title + "\n" + url + "\n";
+        refresh_char_counter();
+
+        for(var o in draft) {
+            if(o.url == url) {
+                text.innerHTML = o.text;
+            }
+        }
+        var current = {
+            title: title,
+            url: url,
+            text: text.value
+        };
+        draft.push(current);
+    });
+
+    console.log(draft);
+    browser.storage.local.set({
+        draft: draft
     });
 }
-*/
-//document.addEventListener('DOMContentLoaded', restoreOptions);
+
 function refresh_char_counter() {
     var target = document.getElementById("share_text").value;
     var url = url_regex(target);
@@ -81,6 +71,10 @@ function url_regex(s) {
     } else {
         return url[0];
     }
+}
+
+function save_local(e, target) {
+
 }
 })();
 
