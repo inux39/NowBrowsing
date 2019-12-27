@@ -1,8 +1,29 @@
 (function() {
-// ロードされたときにストレージの設定を読んで適用
-//window.addEventListener("load", );
-// ウィンドウを閉じようとしたときにストレージに設定を書く
-//window.addEventListener("beforeunload", );
+window.addEventListener("load", function() {
+    browser.storage.local.get("core_options").then((core) => {
+        var core = core.core_options;
+        if(core.head) {
+            document.getElementById("head_text").value = core.head;
+        }
+        document.getElementById("head_enabled").checked = core.head_enabled;
+    });
+});
+
+window.addEventListener("beforeunload", function() {
+    var core = new Object();
+    var head = document.getElementById("head_text").value;
+    var head_enabled = document.getElementById("head_enabled").checked;
+
+    core.head_enabled = head_enabled;
+    if(head) {
+        core.head = head;
+    }
+
+    browser.storage.local.set({
+        core_options: core
+     });
+});
+
 document.getElementById("button_clear_all").addEventListener("click", clear_all);
 document.getElementById("button_add").addEventListener("click", function() {
 });
