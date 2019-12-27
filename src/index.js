@@ -19,7 +19,11 @@ window.onload = function() {
         textarea.innerHTML = title + "\n" + url + "\n";
         refresh_char_counter();
 
-        // local storageから取得して、書きこむ
+        // TODO:
+        // local storageから取得
+        // 同じURLでの保存がないか確認
+        // あったら復元、なければそのまま。
+        // そして保存   * ここで保存したものは、投稿ボタン押したときに消す
         var draft = new Array();
         var current = {
             title: title,
