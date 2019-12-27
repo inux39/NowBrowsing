@@ -24,7 +24,11 @@ window.addEventListener("beforeunload", function() {
      });
 });
 
-document.getElementById("button_clear_all").addEventListener("click", clear_all);
+document.getElementById("button_clear_all").addEventListener("click", function() {
+    clear_all();
+    document.getElementById("head_text").value = "";
+    document.getElementById("head_enabled").checked = false;
+});
 document.getElementById("button_add").addEventListener("click", function() {
 });
 document.getElementById("button_remove").addEventListener("click", function() {

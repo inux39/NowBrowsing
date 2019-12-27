@@ -1,6 +1,7 @@
 'use strict';
 (function() {
-document.addEventListener('DOMContentLoaded', init);
+window.addEventListener('load', init);
+//window.addEventListener('beforeunload', init);
 document.getElementById("share_text").addEventListener("keyup", refresh_char_counter);
 document.getElementById("settings_button").addEventListener("click", function() {
     window.open("settings.html", "_blank");
@@ -19,27 +20,27 @@ document.querySelector("share_button").addEventListener("onclick", function(e) {
 
 function init() {
     var text = document.getElementById("share_text");
-    var draft = new Array();
-
-    browser.storage.local.get("draft")
-    .then((o) => {
-        draft = o;
-        for(var i = draft.length; i > 5; i--) {
-            draft.shift();
-            console.log(draft);
-        }
+    var tabs = browser.tabs.query({currentWindow: true, active: true});
+    var draft = browser.storage.local.get("draft");
+    browser.storage.local.get().then((storage) => {
+        console.log(storage);
     });
 
-    browser.tabs.query({currentWindow: true, active: true})
-    .then((tabs) => {
+    Promise.all([tabs, draft]).then((values) => {
+        var draft = new Array();
+        if(values[1].draft) {
+            draft = values[1].draft;
+        };
+        for(var i = draft.length; i > 5; i--) {
+            draft.shift();
+        }
+        var tabs = values[0];
         var title = tabs[0].title;
         var url = tabs[0].url;
         text.innerHTML = title + "\n" + url + "\n";
-        refresh_char_counter();
-
-        for(var o in draft) {
-            if(o.url === url) {
-                text.innerHTML = o.text;
+        for(var i = 0; i < draft.length; i++) {
+            if(draft[i].url === url) {
+                text.innerHTML = draft[i].text;
             }
         }
         var current = {
@@ -47,12 +48,7 @@ function init() {
             url: url,
             text: text.value
         };
-        draft.push(current);
-    });
-
-    console.log(draft);
-    browser.storage.local.set({
-        draft: draft
+        refresh_char_counter();
     });
 }
 
