@@ -1,18 +1,18 @@
 (function() {
 window.addEventListener("load", function() {
     browser.storage.local.get("core_options").then((core) => {
-        var core = core.core_options;
-        if(core.head) {
-            document.getElementById("head_text").value = core.head;
+        const core_ops = core.core_options;
+        if(core_ops.head) {
+            document.getElementById("head_text").value = core_ops.head;
         }
-        document.getElementById("head_enabled").checked = core.head_enabled;
+        document.getElementById("head_enabled").checked = core_ops.head_enabled;
     });
 });
 
 window.addEventListener("beforeunload", function() {
-    var core = new Object();
-    var head = document.getElementById("head_text").value;
-    var head_enabled = document.getElementById("head_enabled").checked;
+    const core = new Object();
+    const head = document.getElementById("head_text").value;
+    const head_enabled = document.getElementById("head_enabled").checked;
 
     core.head_enabled = head_enabled;
     if(head) {
@@ -32,16 +32,16 @@ document.getElementById("button_clear_all").addEventListener("click", function()
 document.getElementById("button_add").addEventListener("click", function() {
 });
 document.getElementById("button_remove").addEventListener("click", function() {
-    var check = document.getElementsByClassName("account_selected");
-    var items = document.getElementById("account_items");
-    var confirmed = window.confirm("Realy ok?");
+    const check = document.getElementsByClassName("account_selected");
+    const items = document.getElementById("account_items");
+    const confirmed = window.confirm("Realy ok?");
     // 削除するアカウントのリスト
     // できればこれを警告で出したい
-    var list = [];
+    const list = [];
 
     /*
     // リストをとる
-    for(var i = check.length - 1; i >= 0; i--) {
+    for(const i = check.length - 1; i >= 0; i--) {
         if(check[i].checked) {
         lsit.append(i);
         }
@@ -61,16 +61,16 @@ function set_sync() {
 }
 
 function modal_open() {
-    var mask = document.getElementById("modal_overlay");
-    var modal = document.getElementById("modal");
+    const mask = document.getElementById("modal_overlay");
+    const modal = document.getElementById("modal");
     mask.classList.remove("modal_hidden");
     modal.classList.remove("modal_hidden");
 }
 
 function modal_close() {
-    var mask = document.getElementById("modal_overlay");
-    var modal = document.getElementById("modal");
-    var confirmed = window.confirm("Realy ok?");
+    const mask = document.getElementById("modal_overlay");
+    const modal = document.getElementById("modal");
+    const confirmed = window.confirm("Realy ok?");
     if(confirmed) {
         mask.classList.add("modal_hidden");
         modal.classList.add("modal_hidden");
@@ -83,37 +83,37 @@ document.getElementById("auth_cancel").addEventListener("click", modal_close);
 document.getElementById("modal_overlay").addEventListener("click", modal_close);
 
 // debug
-var ss = 0;
+const ss = 0;
 
 function build_accountlist() {
-    var frame = document.createElement("li");
+    const frame = document.createElement("li");
     frame.setAttribute("class", "account_item");
 
-    var account_selected = document.createElement("input");
+    const account_selected = document.createElement("input");
     account_selected.setAttribute("type", "checkbox");
     account_selected.setAttribute("class", "account_selected");
     frame.appendChild(account_selected);
 
-    var user_icon = document.createElement("img");
+    const user_icon = document.createElement("img");
     user_icon.setAttribute("class", "user_icon");
     user_icon.setAttribute("alt", "user's icon");
     frame.appendChild(user_icon);
 
-    var usernames = document.createElement("div");
+    const usernames = document.createElement("div");
     usernames.setAttribute("class", "usernames");
-    var user_name = document.createElement("span");
+    const user_name = document.createElement("span");
     user_name.setAttribute("class", "user_name");
     usernames.appendChild(user_name);
-    var user_id = document.createElement("span");
+    const user_id = document.createElement("span");
     user_id.setAttribute("class", "user_id");
     usernames.appendChild(user_id);
     usernames.appendChild(document.createElement("br"));
-    var host = document.createElement("span");
+    const host = document.createElement("span");
     host.setAttribute("class", "host");
     usernames.appendChild(host);
     frame.appendChild(usernames);
 
-    var refresh_button = document.createElement("input");
+    const refresh_button = document.createElement("input");
     refresh_button.setAttribute("class", "refresh_button");
     refresh_button.setAttribute("type", "image");
     refresh_button.setAttribute("src", "img/reload.svg");
@@ -124,9 +124,9 @@ function build_accountlist() {
 }
 
 function test() {
-    var child = build_accountlist();
+    const child = build_accountlist();
     child.getElementsByClassName("user_name")[0].innerText = "inux39";
-    var o = document.getElementById("account_list");
+    const o = document.getElementById("account_list");
     o.appendChild(child);
 }
 
