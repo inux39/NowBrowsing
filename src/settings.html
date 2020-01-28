@@ -48,16 +48,19 @@
 
     <div id="modal" class="modal_hidden">
         <span>サービスを選ぶ</span>
-        <select id="service_types">
+        <select id="service_select">
             <option value="mastodon" selected>Mastodon</option>
             <!--
             <option value="twitter">Twitter</option>
             -->
         </select>
         <br>
+        <!-- TODO: ドメインとかの入力は上のセレクト次第で表示するようにする -->
         <span>サーバーのドメイン</span>
         <br>
         <input type="text" id="server_domain" placeholder="ex.) mastodos.com">
+        <!--                                                                -->
+
         <div class="modal_buttons">
             <button id="open_auth_page">Ok</button>
             <button id="auth_cancel">Cancel</button>

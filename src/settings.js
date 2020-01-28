@@ -24,13 +24,15 @@ window.addEventListener("beforeunload", function() {
      });
 });
 
+// Modalを開く
+document.getElementById("button_add").addEventListener("click", modal_open);
+
 document.getElementById("button_clear_all").addEventListener("click", function() {
     clear_all();
-    document.getElementById("head_text").value = "";
+    document.getElementById("head_text").value = "Now Browsing";
     document.getElementById("head_enabled").checked = false;
 });
-document.getElementById("button_add").addEventListener("click", function() {
-});
+
 document.getElementById("button_remove").addEventListener("click", function() {
     const check = document.getElementsByClassName("account_selected");
     const items = document.getElementById("account_items");
@@ -52,14 +54,10 @@ document.getElementById("button_remove").addEventListener("click", function() {
     */
 });
 
-function get_sync() {
 
-}
-
-function set_sync() {
-
-}
-
+/*
+    Modal
+*/
 function modal_open() {
     const mask = document.getElementById("modal_overlay");
     const modal = document.getElementById("modal");
@@ -70,21 +68,43 @@ function modal_open() {
 function modal_close() {
     const mask = document.getElementById("modal_overlay");
     const modal = document.getElementById("modal");
-    const confirmed = window.confirm("Realy ok?");
+    mask.classList.add("modal_hidden");
+    modal.classList.add("modal_hidden");
+}
+
+function take_confirm_closing_modal() {
+    const confirmed = window.confirm("このページから離れますか？");
     if(confirmed) {
-        mask.classList.add("modal_hidden");
-        modal.classList.add("modal_hidden");
+        modal_close();
     }
 }
 
-// Modal
-document.getElementById("button_add").addEventListener("click", modal_open);
-document.getElementById("auth_cancel").addEventListener("click", modal_close);
-document.getElementById("modal_overlay").addEventListener("click", modal_close);
+// "Ok"
+document.getElementById("open_auth_page").addEventListener("click", function() {
+/*
+Mastodon以外のサービスを追加したとき、ここにそれ別の処理をかかないといけない
+*/
 
-// debug
+/*
+    - アカウント認証
+    - 認証したのを使ってアカウント情報を読む
+    - 保存されているアカウントリストを読む
+    - アカウントリストに追加し、保存する
+*/
+    test();
+    modal_close();
+});
+
+// "Cancel"
+document.getElementById("auth_cancel").addEventListener("click", take_confirm_closing_modal);
+
+// Modalのオーバーレイ部分(暗転部分)
+document.getElementById("modal_overlay").addEventListener("click", take_confirm_closing_modal);
+
+/*
+    debug
+*/
 const ss = 0;
-
 function build_accountlist() {
     const frame = document.createElement("li");
     frame.setAttribute("class", "account_item");
@@ -129,6 +149,5 @@ function test() {
     const o = document.getElementById("account_list");
     o.appendChild(child);
 }
-
 }());
 
