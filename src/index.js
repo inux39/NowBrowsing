@@ -27,27 +27,18 @@ function init() {
     });
 
     Promise.all([tabs, draft]).then((values) => {
-        let draft = new Array();
-        if(values[1].draft) {
-            draft = values[1].draft;
-        };
-        for(let i = draft.length; i > 5; i--) {
-            draft.shift();
-        }
         const tabs = values[0];
         const title = tabs[0].title;
         const url = tabs[0].url;
         text.innerHTML = title + "\n" + url + "\n";
-        for(let i = 0; i < draft.length; i++) {
-            if(draft[i].url === url) {
-                text.innerHTML = draft[i].text;
-            }
-        }
         const current = {
             title: title,
             url: url,
             text: text.value
         };
+        if(draft.url == url) {
+            text.innerHTML = draft.text;
+        }
         refresh_char_counter();
     });
 }

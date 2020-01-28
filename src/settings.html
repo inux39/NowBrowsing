@@ -9,15 +9,32 @@
 
 <body>
 <div class="master">
-    <div class="headers">
-        <input type="text" id="head_text" placeholder="Now Browsing">
-        <input type="checkbox" id="head_enabled">Use
+    <!-- TODO: いいかんじのリストみたいに-->
+    <div class="master_control">
+        <table>
+        <tr>
+            <th>ヘッダーの文字</th>
+            <td><input type="text" id="head_text" placeholder="Now Browsing"></td>
+        </tr>
+        <tr>
+            <th>ヘッダーを追加する</th>
+            <td><input type="checkbox" id="head_enabled"></td>
+        </tr>
+        <tr>
+        </tr>
+            <th>ヘッダーをハッシュタグにする</th>
+            <td><input type="checkbox" id="head_hashtag"></td>
+        </table>
     </div>
+
+    <hr>
 
     <div class="accounts">
             <ul id="account_list">
         </ul>
     </div>
+
+    <hr>
 
     <div class="account_control">
         <div class="control_add">
