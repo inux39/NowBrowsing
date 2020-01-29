@@ -17,6 +17,21 @@ li {
     margin: 20px;
 }
 
+.master_control {
+    display: flex;
+}
+
+.master_control_description {
+    display: flex;
+    flex-direction: column;
+}
+
+.master_controller {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+}
+
 .user_icon {
     width: 70px;
     margin: 5px 10px;
@@ -48,10 +63,14 @@ li {
     display: flex;
 }
 
-.control_remove {
-    margin-left: auto;
+
+.control_add, .control_remove {
     display: flex;
     flex-direction: column;
+}
+
+.control_remove {
+    margin-left: auto;
 }
 
 #head_text {
