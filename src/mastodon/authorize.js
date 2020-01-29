@@ -1,4 +1,4 @@
-var Mastodon = function(domain) {
+var Authorize = function(domain) {
 
 this.domain = domain;
 this.redirect = browser.identity.getRedirectURL();
@@ -37,7 +37,6 @@ this.authorize = function() {
 };
 
 this.getAccessToken = function() {
-    console.log(domain);
     return authorize();
 };
 //&scope=${encodeURIComponent(scopes.join('+'))}\

@@ -91,7 +91,7 @@ Mastodon以外のサービスを追加したとき、ここにそれ別の処理
     - 保存されているアカウントリストを読む
     - アカウントリストに追加し、保存する
 */
-    const mastodon = new Mastodon("inux39.me");
+    const mastodon = new Authorize("inux39.me");
     mastodon.getAccessToken();
     modal_close();
 });
