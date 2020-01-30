@@ -17,6 +17,7 @@ function bodyFormData(data) {
 }
 
 function postData(url, data) {
+    console.log(data);
     return fetch(url, {
         method: "POST",
         headers: {

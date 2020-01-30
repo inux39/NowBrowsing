@@ -94,10 +94,9 @@ Mastodon以外のサービスを追加したとき、ここにそれ別の処理
     const domain = document.getElementById("server_domain").value;
     const mastodon = new Authorize(domain);
     mastodon.registApp().then(app => {
-        const cred = new Credentials(app.client_id, app.client_secret);
-        mastodon.authentication(cred).then(e => {
-            cred.access_token = e.access_token;
-
+        mastodon.credentials = new Credentials(app.client_id, app.client_secret);
+        mastodon.authorize().then(e => {
+            mastodon.credentails.access_token = e.access_token;
         }).catch(e => alert(e));
         modal_close();
     }).catch(e => alert(e));
