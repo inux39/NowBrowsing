@@ -1,11 +1,32 @@
-const user_agent = browser.management.getSelf().then((addon) => {
-    var ua = addon.name + " (" + addon.version + "; +" +
-        addon.homepageUrl + ")";
-    return ua;
-}, (some) => {
-    return "Now Browsing";
-});
+function encodeURIObject(data) {
+    const pairs = [];
+    for(var name in data) {
+        const n = encodeURIComponent(name);
+        const d = encodeURIComponent(data[name]);
+        pairs.push(n + "=" + d);
+    }
+    return pairs.join("&").replace(/%20/g, "+");
+}
 
+function bodyFormData(data) {
+    const bd = new FormData();
+    for(var name in data) {
+        bd.append(name, data[name]);
+    }
+    return bd;
+}
+
+function postData(url, data) {
+    return fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(data),
+    }).then(r => r.json());
+}
+
+/*
 class StorageObjects {
 }
 
@@ -24,7 +45,6 @@ class UserIcons {
 
 }
 
-/*
 var core_options = {
     head_string: String,    // ヘッダーに使う文字
     head_enabled: Boolean   // ヘッダー付与するかどうか

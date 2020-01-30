@@ -6,7 +6,8 @@ this.appURL = "https://github.com/inux39/NowBrowsing";
 this.scopes = ["read", "write"];
 this.endpoint = {
     token: "/oauth/token",
-    revoke: "/oauth/revoke"
+    revoke: "/oauth/revoke",
+    registApp: "/api/v1/apps"
 };
 
 this.authentication = function() {
@@ -17,11 +18,15 @@ this.authentication = function() {
     grant_type=`;
 };
 
-this.createApp = function() {
-    const request = new XMLHttpRequest();
-    const url = domain + "/oauth/v1/apps"
-    request.open("POST", url);
-    request.setRequestHeader("Content-Type", "application/json");
+this.registApp = function() {
+    const url = "https://" + domain + this.endpoint.registApp;
+    const app = {
+        client_name: this.appName,
+        redirect_uris: this.redirect,
+        scopes: this.scopes.join(" "),
+        website: this.appURL
+    };
+    postData(url, app);
 };
 
 this.validate = function(redirectURL) {
