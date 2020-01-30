@@ -1,5 +1,4 @@
 var Authorize = function(domain) {
-
 this.domain = domain;
 this.redirect = browser.identity.getRedirectURL();
 this.appName = "Now Browsing";
