@@ -91,9 +91,16 @@ Mastodon以外のサービスを追加したとき、ここにそれ別の処理
     - 保存されているアカウントリストを読む
     - アカウントリストに追加し、保存する
 */
-    const mastodon = new Authorize("don.inux39.me");
-    mastodon.registApp();
-    modal_close();
+    const domain = document.getElementById("server_domain").value;
+    const mastodon = new Authorize(domain);
+    mastodon.registApp().then(app => {
+        const cred = new Credentials(app.client_id, app.client_secret);
+        mastodon.authentication(cred).then(e => {
+            cred.access_token = e.access_token;
+
+        }).catch(e => alert(e));
+        modal_close();
+    }).catch(e => alert(e));
 });
 
 // "Cancel"

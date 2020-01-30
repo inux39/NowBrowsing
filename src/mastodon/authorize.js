@@ -1,4 +1,4 @@
-var Authorize = function(domain) {
+let Authorize = function(domain) {
 this.domain = domain;
 this.redirect = browser.identity.getRedirectURL();
 this.appName = "Now Browsing";
@@ -10,12 +10,18 @@ this.endpoint = {
     registApp: "/api/v1/apps"
 };
 
-this.authentication = function() {
-    const auth_uri = domain + `/oauth/authorize/\
-    ?client_id=${client_id}\
-    client_secret=${client_secret}\
-    redirect_uri=${redirect}\
-    grant_type=`;
+this.authentication = function(cred) {
+    const url = "https://" + domain + this.endpoint.token;
+    const app = {
+        client_id: cred.client_id,
+        client_secret: cred.client_secret,
+        redirect_uri: this.redirect,
+        grant_type: "client_credentials",
+    };
+    return browser.identity.launchWebAuthFlow({
+        interactive: true,
+        url: "https://" + domain + "?" + encodeURIObject(app),
+    });
 };
 
 this.registApp = function() {
@@ -26,14 +32,14 @@ this.registApp = function() {
         scopes: this.scopes.join(" "),
         website: this.appURL
     };
-    postData(url, app);
+    return postData(url, app);
 };
 
 this.validate = function(redirectURL) {
 
 };
 
-this.authorize = function() {
+this.authorize = function(cred) {
     return browser.identity.launchWebAuthFlow({
         interactive: true,
         url: domain + auth_uri
